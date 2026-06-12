@@ -5,6 +5,7 @@ import nl.pluralsight.stagepass.service.VenueService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,8 @@ public class VenueController {
     @PostMapping
     public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
         Venue created = venueService.createVenue(venue);
-        return ResponseEntity.ok(created);
+        URI location = URI.create("/api/venues" + created.getId());
+        return ResponseEntity.created(location).body(created);
     }
 
     @PutMapping("/{id}")

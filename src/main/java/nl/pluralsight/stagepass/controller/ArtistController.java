@@ -5,6 +5,7 @@ import nl.pluralsight.stagepass.service.ArtistService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,8 @@ public class ArtistController {
     @PostMapping
     public ResponseEntity<Artist> createArtist(@RequestBody Artist artist) {
         Artist created = artistService.createArtist(artist);
-        return ResponseEntity.ok(created);
+        URI location = URI.create("/api/artists" + created.getId());
+        return ResponseEntity.created(location).body(created);
     }
 
     @PutMapping("/{id}")

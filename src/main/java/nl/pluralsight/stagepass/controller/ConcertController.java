@@ -7,6 +7,7 @@ import nl.pluralsight.stagepass.service.ConcertService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -36,7 +37,8 @@ public class ConcertController {
     @PostMapping
     public ResponseEntity<Concert> createConcert(@RequestBody Concert concert) {
         Concert created = concertService.createConcert(concert);
-        return ResponseEntity.ok(created);
+        URI location = URI.create("/api/concerts" + created.getId());
+        return ResponseEntity.created(location).body(created);
     }
 
     @PutMapping("/{id}")

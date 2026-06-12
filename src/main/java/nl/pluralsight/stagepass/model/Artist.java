@@ -15,8 +15,7 @@ public class Artist {
 
     public Artist() {}
 
-    public Artist(Long id, String name, String genre, String bio) {
-        this.id = id;
+    public Artist(String name, String genre, String bio) {
         this.name = name;
         this.genre = genre;
         this.bio = bio;

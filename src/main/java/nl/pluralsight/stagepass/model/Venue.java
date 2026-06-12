@@ -15,8 +15,7 @@ public class Venue {
 
     public Venue() {}
 
-    public Venue(Long id, String name, String city, int capacity) {
-        this.id = id;
+    public Venue(String name, String city, int capacity) {
         this.name = name;
         this.city = city;
         this.capacity = capacity;
