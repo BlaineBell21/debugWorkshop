@@ -32,9 +32,8 @@ public class Concert {
 
     public Concert() {}
 
-    public Concert(Long id, String title, LocalDate date, Artist artist, Venue venue,
+    public Concert(String title, LocalDate date, Artist artist, Venue venue,
                    int totalSeats, int availableSeats, BigDecimal ticketPrice) {
-        this.id = id;
         this.title = title;
         this.date = date;
         this.artist = artist;

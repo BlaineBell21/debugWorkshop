@@ -37,9 +37,12 @@ public class BookingController {
     }
 
     @PostMapping
-    public URI createBooking(@RequestBody Booking booking) {
+    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
+        // fixed error causing booking to return incorrect response code
         Booking created = bookingService.createBooking(booking);
-        return URI.create("/api/bookings" + created.getId());
+        URI location = URI.create("/api/bookings" + created.getId());
+
+        return ResponseEntity.created(location).body(created);
     }
 
     @DeleteMapping("/{id}")
